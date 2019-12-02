@@ -20,6 +20,10 @@ type API struct {
 	ManagerService *ManagerService
 }
 
+func NewAPI(ws *fibre.WebService, ms *ManagerService) *API {
+	return &API{WebService: ws, ManagerService: ms}
+}
+
 // ManagerService contains the configuration settings required to manage the api.
 type ManagerService struct {
 	Config   *toml.Tree
