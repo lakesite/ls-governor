@@ -158,7 +158,7 @@ func YGMHandler(w http.ResponseWriter, r *http.Request, gapi *governor.API) {
 	decoder.Decode(ygm, r.Form)
 
 	// insert the ygm structure
-	if dbc := gapi.ManagerService.DBConfig["zefram"].Connection.Create(ygm); dbc.Error != nil {
+	if dbc := gapi.ManagerService.DBConfig["example_app"].Connection.Create(ygm); dbc.Error != nil {
 		gapi.WebService.JsonStatusResponse(w, fmt.Sprintf("Error: %s", dbc.Error.Error()), http.StatusInternalServerError)
 		return
 	}
@@ -186,7 +186,7 @@ The following summarizes the above into an example main.go.
 ```
 [example_app]
 dbdriver = "sqlite3"
-dbpath   = "zefram.db"
+dbpath   = "example.db"
 other    = "settings..."
 ```
 
