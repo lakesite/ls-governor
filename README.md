@@ -46,6 +46,7 @@ mysql:
 package model
 
 import (
+	"errors"
 	"fmt"
 
 	"github.com/lakesite/ls-governor"
@@ -54,11 +55,11 @@ import (
 // Migrate takes a governor API and app name and migrates models, returns error
 func Migrate(gapi *governor.API, app string) error {
 	if gapi == nil {
-		return error.Error("Migrate: Governor API is not initialized.")
+		return errors.New("Migrate: Governor API is not initialized.")
 	}
 
 	if app == "" {
-		return error.Error("Migrate: App name cannot be empty.")
+		return errors.New("Migrate: App name cannot be empty.")
 	}
 
 	dbc := gapi.ManagerService.DBConfig[app]
